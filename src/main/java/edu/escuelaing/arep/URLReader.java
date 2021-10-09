@@ -57,8 +57,8 @@ public class URLReader {
     }
 
     /**
-     * 
-     * @param sitetoread
+     * Reed one https site
+     * @param sitetoread the response of the site
      */
     public static String readURL(String sitetoread) throws IOException{
             URL siteURL = new URL(sitetoread);
