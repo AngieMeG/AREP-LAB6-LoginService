@@ -1,0 +1,87 @@
+:root{
+    --main-bg--color: rgb(116,197,180);
+    --main-card--color: rgb(29,31,43);
+    --main-card-text-color: rgb(255, 255, 255);
+    --second-card-text-color: rgb(114, 112, 124);
+    --main-button--color: rgb(116,197,180);
+    --main-button-text-color: rgb(255, 255, 255);
+}
+
+
+
+body,
+html {
+    font-family: 'Kanit', sans-serif;
+    font-size: medium;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--main-bg--color);
+}
+.user_card {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background:var(--main-card--color);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}
+.brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    padding: 10px;
+    text-align: center;
+}
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.input-name{
+    text-transform: uppercase;
+    color: var(--second-card-text-color);
+    font-weight: bold;
+}
+
+.form_container {
+    margin-top: 100px;
+}
+
+.form-control{
+    border:none;
+    border-top:1px solid var(--second-card-text-color) !important;
+    border-radius:0;
+    background: var(--main-card--color) !important;
+    color: var(--main-card-text-color) !important;
+}
+
+.form-control:focus{
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.login_btn {
+    width: 100%;
+    background: var(--main-button--color);
+    color: var(--main-button-text-color);
+    font-weight: bold;
+}
+
+.login_container {
+    padding: 0 2rem;
+}
