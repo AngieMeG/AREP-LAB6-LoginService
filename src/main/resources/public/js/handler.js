@@ -13,6 +13,7 @@ handler = (function(){
         }).then(res => {
             if(res.ok){
                 console.log("It works!");
+                window.location.href = "/security/helloService";
             } else{
                 swal({
                     icon: "error",

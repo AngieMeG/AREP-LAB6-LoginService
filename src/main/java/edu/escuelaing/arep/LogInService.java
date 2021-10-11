@@ -14,15 +14,20 @@ public class LogInService {
     private static HashMap<String,String> users = new HashMap<String,String>();
 
     public static void main(String[] args){
-        users.put("AngieMeG", encrypt("AMG1234"));
+        users.put("AngieMeG", encrypt("123456"));
+        URLReader.allowConnection();
         port(getPort());
         staticFileLocation("/public");
+        secure("keystores/ecikeystore.p12", "123456", null, null);
+
         get("/", (req, res) -> {
             res.redirect("/login.html");
             res.status(200);
             return null;
         });
         post("/login", (req, res) -> logInPage(req, res));
+
+        get("/security/helloService", (req, res) -> helloServiceHandler(res));
     }
 
     private static String logInPage(Request req, Response res) {
@@ -31,16 +36,25 @@ public class LogInService {
         req.session(true);
         User user = (new Gson()).fromJson(req.body(), User.class);
         if(users.containsKey(user.getUsername()) && users.get(user.getUsername()).equals(encrypt(user.getPassword()))){
-            System.out.println("Yep...");
             req.session().attribute("user", user.getUsername());
             req.session().attribute("isLogged", true);
             numberStatus = 200;
             status = "succesful login";
         }
-        System.out.println("Dunno");
         res.status(numberStatus);
         return status;
     }
+
+    private static String helloServiceHandler(Response res){
+        try{
+            return "<h1>" + URLReader.readURL("https://localhost:4568/helloService") + "</h1>";
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        res.status(500);
+        return "<h1> Server not found </h1>";
+    }
+
     private static String encrypt(String password){
         String encryptedpassword = password;
         try{
@@ -64,7 +78,7 @@ public class LogInService {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
         }
-        return 5000;
+        return 4567;
     }
 
 }
